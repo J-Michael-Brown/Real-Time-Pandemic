@@ -27,9 +27,11 @@ describe('City', function() {
   describe('checkOutbreak', function() {
     it('should check for too many disease ticks for any color. If there are it will bring that number back to 3 and set outbreak to true.', function() {
       atlanta.addCube('blue', 4);
-      atlanta.checkOutbreak();
-      expect(atlanta.redStrain).toEqual(3);
-      expect(atlanta.outbreak).toEqual(true);
+
+      expect(atlanta.checkOutbreak()).toEqual(['blue']);
+      const blueDisease = atlanta.findDisease('blue');
+      expect(blueDisease.outbroke).toEqual(true);
+      expect(atlanta.findDisease('blue').cubes).toEqual(3);
     });
 
   });

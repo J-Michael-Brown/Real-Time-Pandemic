@@ -4,6 +4,7 @@ class Disease {
     this.cubes = 0;
     this.cured = false;
     this.eradicated = false;
+    this.outbroke = false;
   }
 }
 

@@ -5,28 +5,31 @@ class City {
     this.name = name;
     this.diseases = commonDiseases;
     this.connections = connections; // array of cities connected;
-    this.outbroke = false;
+
   }
 
   checkOutbreak() {
-    this.diseases.foreach(function(disease) {
+    const breaches = [];
+    let thisCity = this;
+    this.diseases.forEach(function(disease) {
       if (disease.cubes >= 3){
-        this.outbroke = true;
+        disease.outbroke = true;
         disease.cubes = 3;
-        this.outbreak(disease.codename);
-        return this.name;
+        breaches.push(disease.codename);
+        thisCity.outbreak(disease.codename);
       }
-
     });
+    // this = thisCity;
+    return breaches;
   }
 
   outbreak(codename){
-
-    this.connections.foreach(function(city) {
-
-      city.addCube(codename);
+    this.connections.forEach(function(city) {
+      if (!city.findDisease(codename).outbroke) {
+        city.addCube(codename);
+        city.checkOutbreak;
+      }
     });
-
 
   }
 
