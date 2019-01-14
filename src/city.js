@@ -1,10 +1,11 @@
 import { commonDiseases } from './disease.js';
 
 class City {
-  constructor(name, connections = []) {
+  constructor(name, diseaseCodename = "", connections = []) {
     this.name = name;
     this.diseases = commonDiseases;
     this.connections = connections; // array of cities connected;
+    this.defaultDiseaseCodename = diseaseCodename;
 
   }
 

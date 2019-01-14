@@ -39,18 +39,9 @@ describe('City', function() {
   describe('outbreak', function() {
     it('add same type of disease to all "connection" cities.', function() {
       const newYork = new City('New York');
-      newYork.redStrain = 0;
       atlanta.connections.push(newYork);
-      atlanta.redStrain+=4;
-      atlanta.outbreak();
-      expect(newYork.redStrain).toEqual(1);
+      atlanta.outbreak('red');
+      expect(newYork.findDisease('red').cubes).toEqual(1);
     });
   });
-
-  // describe('', function() {
-  //   it('should', function() {
-  //
-  //     expect().toEqual();
-  //   });
-  // });
 });

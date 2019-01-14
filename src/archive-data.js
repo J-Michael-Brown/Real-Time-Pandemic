@@ -1,14 +1,14 @@
 import { City } from './city.js';
 
-  const atlanta = new City("Atlanta");
-  const chicago = new City("Chicago");
-  const losAngeles = new City("Los Angeles");
-  const mexicoCity= new City("Mexico City");
-  const miami = new City("Miami");
-  const newYork = new City("New York");
-  const sanFrancisco = new City("San Francisco");
-  const washington = new City("Washington");
-  const toronto = new City("Toronto");
+  const atlanta = new City("Atlanta", 'blue');
+  const chicago = new City("Chicago", 'blue');
+  const losAngeles = new City("Los Angeles", 'yellow');
+  const mexicoCity= new City("Mexico City", 'yellow');
+  const miami = new City("Miami", 'yellow');
+  const newYork = new City("New York", 'blue');
+  const sanFrancisco = new City("San Francisco", 'blue');
+  const washington = new City("Washington", 'blue');
+  const toronto = new City("Toronto", 'blue');
 
   atlanta.connections.push(washington, miami, chicago);
   chicago.connections.push(sanFrancisco, losAngeles, mexicoCity, atlanta, toronto);
