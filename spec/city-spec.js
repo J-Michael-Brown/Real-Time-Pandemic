@@ -4,7 +4,7 @@ import { Disease } from './../src/disease.js';
 describe('City', function() {
   let atlanta;
   beforeEach(function() {
-    atlanta = new City('Atlanta');
+    atlanta = new City('Atlanta', 'blue');
   });
 
   describe('findDisease', function() {
@@ -22,10 +22,10 @@ describe('City', function() {
       let result = atlanta.findDisease('blue').cubes;
       expect(result).toEqual(3);
     });
-    it('should not add a cube if that disease is eradicated => disease.eradicated:true', function() {
+    it('should not add a cube if that disease is eradicated example: disease.eradicated:true', function() {
       atlanta.diseases[0].eradicated = true;
       let blue = atlanta.diseases[0];
-      expect(atlanta.addCube(blue.codename)).toEqual(false);
+      expect(atlanta.addCube(blue.codename)).toEqual(0);
       expect(atlanta.diseases[0].cubes).toEqual(0);
     });
   });

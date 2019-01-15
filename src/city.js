@@ -37,12 +37,16 @@ class City {
   addCube(codename, numberOfCubes = 1) {
     const length = this.diseases.length;
     for(let diseaseIndex = 0; diseaseIndex < length; diseaseIndex++) {
-      if (this.diseases[diseaseIndex].codename == codename) {
+      if ((this.diseases[diseaseIndex].codename == codename)&&(this.diseases[diseaseIndex].eradicated == false)) {
         this.diseases[diseaseIndex].cubes+=numberOfCubes;
-        return true;
+        if (this.diseases[diseaseIndex].cubes < 0) {
+          this.diseases[diseaseIndex].cubes = 0;
+        }
+        return numberOfCubes;
       }
     }
-    return false;
+    numberOfCubes = 0;
+    return numberOfCubes;
   }
 
   findDisease(codename) {
