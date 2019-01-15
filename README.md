@@ -1,6 +1,6 @@
 # Pandemic
 
-#### By Scott Bergler
+#### By Charley McGowan and Michael Brown
 
 ## Table of contents
 
@@ -56,7 +56,7 @@ Output: some output;
 ## Known Bugs
 
 ## Support and contact details
-Scott Bergler :: commandinghands@gmail.com
+Charley McGowan
 
 ## Technologies Used
 
@@ -66,4 +66,4 @@ HTML, CSS, Json, dotnet.
 
 Licensed under the MIT license.
 
-Copyright (c) 2018 ** Scott Bergler **
+Copyright (c) 2018 ** Charley McGowan and Michael Brown **
