@@ -18,10 +18,10 @@ class Player {
   }
 }
 
-const averagePlayers = [
+const testPlayers = [
   new Player('Joe'),
   new Player('Michael'),
   new Player('Charley')
 ];
 
-export { averagePlayers, Player }
+export { testPlayers, Player }

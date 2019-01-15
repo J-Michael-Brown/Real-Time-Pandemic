@@ -1,12 +1,12 @@
 import { northAmerica } from './archive-data.js';
 import { Card } from './card.js';
-import { averagePlayers } from './player.js';
+import { testPlayers } from './player.js';
 
 class Game {
-  constructor(){
+  constructor(playerList = testPlayers){
     this.cityList = northAmerica;
-    this.playerList = averagePlayers;
-    this.discard = [];
+    this.playerList = playerList;
+    //this.discard = [];
     this.infectionDeck = [];
     this.createInfectionDeck();
     this.playerDrawDeck = [];
@@ -74,7 +74,10 @@ class Game {
     return cardInPlay;
   }
 
-  discardPlayerCard() {
+  discardPlayerCard(playerName,discardedCardCityName) {
+    let discardedCard = this.playerList[this.findPlayerIndex(playerName)].discard(discardedCardCityName);
+    this.playerDiscardDeck.push(discardedCard);
+    return discardedCard;
 
   }
 
@@ -86,6 +89,15 @@ class Game {
     for (let playerIndex = 0; playerIndex < this.playerList.length; playerIndex++) {
       if (this.playerList[playerIndex].name == name) {
         return this.playerList[playerIndex];
+      }
+    }
+    return false;
+  }
+
+  findPlayerIndex(playerName) {
+    for (let playerIndex = 0; playerIndex < this.playerList.length; playerIndex++) {
+      if (this.playerList[playerIndex].name == playerName) {
+        return playerIndex;
       }
     }
     return false;

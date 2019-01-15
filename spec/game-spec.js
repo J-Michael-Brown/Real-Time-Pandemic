@@ -65,11 +65,22 @@ describe('Game', function() {
     });
   });
 
-  // describe('discardPlayerCard', function() {
-  //   it('will simply discard a chosen card', function() {
-  //     let currentPlayer = newGame.findPlayer('Joe');
-  //     currentPlayer.discard(
-  //   });
-  // });
+  describe('findPlayerIndex', function() {
+    it('takes a player name and returns a the associated player index from the player list', function() {
+      const joe = newGame.findPlayerIndex('Joe');
+      expect(joe).toEqual(0);
+    });
+  });
+
+  describe('discardPlayerCard', function() {
+    it('removes a chosen card from chosen players hand, and adds it to the discard deck', function() {
+      let resultCard = newGame.drawPlayerCard('Joe');
+
+      let discardedCard = newGame.discardPlayerCard('Joe', resultCard.cityName);
+      expect(discardedCard).toEqual(resultCard);
+      expect(newGame.playerDiscardDeck).toContain(resultCard);
+
+    });
+  });
 
 });
