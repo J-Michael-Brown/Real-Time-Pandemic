@@ -37,11 +37,13 @@ describe('City', function() {
   });
 
   describe('outbreak', function() {
-    it('add same type of disease to all "connection" cities.', function() {
+    it('add same type of disease to all "connection" cities. Set outbroke status to "true".', function() {
       const newYork = new City('New York');
       atlanta.connections.push(newYork);
       atlanta.outbreak('red');
-      expect(newYork.findDisease('red').cubes).toEqual(1);
+      const newYorkRed = newYork.findDisease('red');
+      expect(newYorkRed.cubes).toEqual(1);
+      expect(newYorkRed.outbroke).toEqual(true);
     });
   });
 });

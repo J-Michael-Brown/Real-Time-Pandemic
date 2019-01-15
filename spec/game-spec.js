@@ -29,4 +29,15 @@ describe('Game', function() {
     });
   });
 
+  describe('resolveOutbreaks', function() {
+    it("should set all cities' diseases to outbroke:false and return the number of outbreaks that had to be swithched.", function() {
+      newGame.cityList[0].outbreak('red');
+      newGame.cityList[1].outbreak('blue');
+      newGame.cityList[2].outbreak('red');
+      const outbreaks = newGame.resolveOutbreaks();
+      expect(outbreaks).toEqual(3);
+      expect(newGame.cityList[0].findDisease('red').outbroke).toEqual(false);
+    });
+  });
+
 });
