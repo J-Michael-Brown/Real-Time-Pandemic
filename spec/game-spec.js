@@ -85,22 +85,37 @@ describe('Game', function() {
   describe('cure()', function() {
     it('sets all cities\' diseases of a specified codename to cured:true', function() {
       const newDisease = new Disease('veronica virus');
-      const racoon = new City('Racoon', 'veronica virus', [], [newDisease]);
-      newGame.diseaseList.push(newDisease);
-      expect(newGame.findDisease('veronica virus').cured).toEqual(false);
+      const racoon = new City('Racoon', 'veronica virus');
+      racoon.diseases.push(newDisease);
+      newGame.cityList.push(racoon);
+      expect(newGame.findCity('Racoon').findDisease('veronica virus').cured).toEqual(false);
       newGame.cure('veronica virus');
-      expect(newGame.findDisease('veronica virus').cured).toEqual(true);
+      expect(newGame.findCity('Racoon').findDisease('veronica virus').cured).toEqual(true);
+    });
+  });
+
+  describe('eradicateCheck', function() {
+    it('should return an array of cities that have cubes of a given virus', function() {
+      newGame.cityList[0].addCube('blue');
+      expect(newGame.eradicateCheck('blue')).toContain(newGame.cityList[0]);
     });
   });
 
   describe('eradicate()', function() {
     it('sets all cities\' diseases of a specified codename to eradicated:true', function() {
       const newDisease = new Disease('veronica virus');
-      const racoon = new City('Racoon', 'veronica virus', [], [newDisease]);
-      newGame.diseaseList.push(newDisease);
-      expect(newGame.findDisease('veronica virus').eradicated).toEqual(false);
+      let racoon2 = new City('Racoon2', 'veronica virus');
+      racoon2.diseases.push(newDisease);
+      newGame.cityList.push(racoon2);
+      expect(newGame.findCity('Racoon2').findDisease('veronica virus').eradicated).toEqual(false);
       newGame.eradicate('veronica virus');
-      expect(newGame.findDisease('veronica virus').eradicated).toEqual(true);
+      expect(newGame.findCity('Racoon2').findDisease('veronica virus').eradicated).toEqual(true);
+      let racoon2Index = newGame.findCityIndex('Racoon2');
+      newGame.cityList[racoon2Index].diseases[newGame.cityList[racoon2Index].findDiseaseIndex('veronica virus')].eradicated = false;
+      newGame.cityList[racoon2Index].addCube('veronica virus', 1);
+      racoon2 = newGame.cityList[racoon2Index];
+      expect(newGame.eradicate('veronica virus')).toContain(racoon2);
+      expect(newGame.findCity('Racoon2').findDisease('veronica virus').eradicated).toEqual(false);
     });
   });
 

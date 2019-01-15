@@ -37,8 +37,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: [
-          /node_modules/,
-          /spec/
+          /node_modules/
         ],
         loader: "eslint-loader"
       },

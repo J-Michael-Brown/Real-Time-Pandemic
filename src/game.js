@@ -6,7 +6,6 @@ class Game {
   constructor(playerList = testPlayers){
     this.cityList = northAmerica;
     this.playerList = playerList;
-    //this.discard = [];
     this.infectionDeck = [];
     this.createInfectionDeck();
     this.playerDrawDeck = [];
@@ -14,7 +13,7 @@ class Game {
     this.epidemicCardAmount = 4;
     this.playerDiscardDeck = [];
     this.infectionDiscardDeck = [];
-    this.diseaseList = this.playerList[0].diseases;
+    this.getDiseaseList();
   }
 
   resolveOutbreaks() {
@@ -56,6 +55,15 @@ class Game {
       }
     });
     return targetCity;
+  }
+
+  findCityIndex(cityName){
+    for(let cityIndex = 0; cityIndex < this.cityList.length; cityIndex++) {
+      if (cityName == this.cityList[cityIndex].name){
+        return cityIndex;
+      }
+    }
+    return false;
   }
 
   flipInfectionCard () {
@@ -102,6 +110,46 @@ class Game {
       }
     }
     return false;
+  }
+
+  getDiseaseList(cityIndex = 0){
+    this.diseaseList = this.cityList[cityIndex].diseases;
+  }
+
+  cure(codename) {
+    this.cityList.forEach(function(city) {
+      city.diseases.forEach(function(disease) {
+        if(disease.codename == codename) {
+          disease.cured = true;
+        }
+      });
+    });
+  }
+
+  eradicate(codename) {
+    const cities = this.eradicateCheck(codename);
+    if (cities.length==0) {
+      this.cityList.forEach(function(city) {
+        city.diseases.forEach(function(disease) {
+          if(disease.codename == codename) {
+            disease.eradicated = true;
+          }
+        });
+      });
+    }
+    return cities;
+  }
+
+  eradicateCheck(codename) {
+    let cities = [];
+    this.cityList.forEach(function(city) {
+      city.diseases.forEach(function(disease) {
+        if((disease.codename == codename) && (disease.cubes > 0)) {
+          cities.push(city);
+        }
+      });
+    });
+    return cities;
   }
 
 }

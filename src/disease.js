@@ -8,11 +8,4 @@ class Disease {
   }
 }
 
-const commonDiseases = [
-  new Disease('red'),
-  new Disease('blue'),
-  new Disease('black'),
-  new Disease('yellow')
-];
-
-export { Disease, commonDiseases }
+export { Disease }

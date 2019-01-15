@@ -2,14 +2,20 @@ import { City } from './../src/city.js';
 import { Disease } from './../src/disease.js';
 
 describe('City', function() {
+
   let atlanta;
+
   beforeEach(function() {
     atlanta = new City('Atlanta', 'blue');
   });
 
+  afterEach(function() {
+    atlanta = [];
+  });
+
   describe('findDisease', function() {
     it('return an object of the disease, when searched by string of name.', function() {
-      const purple = new Disease('purple')
+      const purple = new Disease('purple');
       atlanta.diseases.push(purple);
       let result = atlanta.findDisease('purple');
       expect(result.codename).toEqual('purple');
@@ -17,6 +23,10 @@ describe('City', function() {
   });
 
   describe('addCube', function() {
+    beforeEach(function() {
+      atlanta = new City('Atlanta', 'blue');
+    });
+
     it('Should find a disease with a given codename and add a (potentielly) specified number of cubes to it.', function() {
       atlanta.addCube('blue', 3);
       let result = atlanta.findDisease('blue').cubes;
@@ -49,9 +59,10 @@ describe('City', function() {
       atlanta.connections.push(newYork);
       atlanta.outbreak('red');
       let newYorkRed = newYork.findDisease('red');
+
       expect(newYorkRed.cubes).toEqual(3);
       expect(newYorkRed.outbroke).toEqual(false);
-      expect(atlanta.findDisease('red').outbroke).toEqual(false);
+      expect(atlanta.findDisease('red').outbroke).toEqual(true);
 
       atlanta.outbreak('red');
       newYorkRed = newYork.findDisease('red');

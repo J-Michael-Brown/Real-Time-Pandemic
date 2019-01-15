@@ -1,12 +1,20 @@
-import { commonDiseases } from './disease.js';
+import { Disease } from './disease.js';
 
 class City {
-  constructor(name, diseaseCodename = "", connections = [], diseases = commonDiseases) {
+  constructor(name, diseaseCodename = "", connections = []) {
     this.name = name;
-    this.diseases = diseases;
     this.connections = connections; // array of cities connected;
     this.defaultDiseaseCodename = diseaseCodename;
+    this.createDiseases();
+  }
 
+  createDiseases() {
+    this.diseases = [
+      new Disease('red'),
+      new Disease('blue'),
+      new Disease('black'),
+      new Disease('yellow')
+    ];
   }
 
   checkOutbreak() {
@@ -25,6 +33,7 @@ class City {
   }
 
   outbreak(codename){
+    this.diseases[this.findDiseaseIndex(codename)].outbroke = true;
     this.connections.forEach(function(city) {
       if (!city.findDisease(codename).outbroke) {
         city.addCube(codename);
@@ -54,6 +63,16 @@ class City {
     for(let diseaseIndex = 0; diseaseIndex < length; diseaseIndex++) {
       if (this.diseases[diseaseIndex].codename == codename) {
         return this.diseases[diseaseIndex];
+      }
+    }
+    return false;
+  }
+
+  findDiseaseIndex(codename) {
+    const length = this.diseases.length;
+    for(let diseaseIndex = 0; diseaseIndex < length; diseaseIndex++) {
+      if (this.diseases[diseaseIndex].codename == codename) {
+        return diseaseIndex;
       }
     }
     return false;
