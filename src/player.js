@@ -6,6 +6,16 @@ class Player {
     this.handLimit = 7;
     this.playerRole = "";
   }
+
+  discard(cityName){
+    let hand = this.cardHand;
+    for (let currentCardIndex = 0 ; currentCardIndex < hand.length ; currentCardIndex++) {
+      if (hand[currentCardIndex].cityName == cityName){
+        const card = this.cardHand.splice(currentCardIndex, 1)[0];
+        return card;
+      }
+    }
+  }
 }
 
 const averagePlayers = [

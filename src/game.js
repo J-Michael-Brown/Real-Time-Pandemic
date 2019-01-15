@@ -74,6 +74,10 @@ class Game {
     return cardInPlay;
   }
 
+  discardPlayerCard() {
+
+  }
+
   shuffleDeck() {
 
   }

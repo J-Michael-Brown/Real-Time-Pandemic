@@ -65,4 +65,11 @@ describe('Game', function() {
     });
   });
 
+  // describe('discardPlayerCard', function() {
+  //   it('will simply discard a chosen card', function() {
+  //     let currentPlayer = newGame.findPlayer('Joe');
+  //     currentPlayer.discard(
+  //   });
+  // });
+
 });
