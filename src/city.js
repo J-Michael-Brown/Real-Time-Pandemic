@@ -13,7 +13,7 @@ class City {
     const breaches = [];
     let thisCity = this;
     this.diseases.forEach(function(disease) {
-      if (disease.cubes >= 3){
+      if (disease.cubes > 3){
         disease.outbroke = true;
         disease.cubes = 3;
         breaches.push(disease.codename);

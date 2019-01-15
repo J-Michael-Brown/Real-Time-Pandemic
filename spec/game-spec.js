@@ -8,6 +8,13 @@ describe('Game', function() {
     newGame = new Game();
   });
 
+  describe('findCity', function() {
+    it('should return a city object given it\'s name.', function() {
+      const testCity = newGame.cityList[0];
+      expect(newGame.findCity(testCity.name)).toEqual(testCity);
+    });
+  });
+
   describe('createInfectionDeck',function() {
     it('instantiates game with a deck of infection cards', function(){
       let newCard = new Card(newGame.cityList[0]);

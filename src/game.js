@@ -10,6 +10,8 @@ class Game {
     this.playerDrawDeck = [];
     this.createPlayerDrawDeck();
     this.epidemicCardAmount = 4;
+    this.playerDiscardDeck = [];
+    this.infectionDiscardDeck = [];
   }
 
   createInfectionDeck(){
@@ -30,7 +32,18 @@ class Game {
     return newPlayerDrawDeck;
   }
 
+  findCity(cityName){
+    let targetCity = false;
+    this.cityList.forEach(function(city){
+      if (cityName == city.name){
+        targetCity = city;
+      }
+    });
+    return targetCity;
+  }
+
   flipInfectionCard () {
+    let cardInPlay = this.infectionDeck.pop();
 
   }
 
