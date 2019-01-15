@@ -18,10 +18,10 @@
 
 
 ## Setup/Installation
-Cloned the template code from [GitHub](https://github.com/skillitzimberg/Pandemic).
+Clone the template code from [GitHub](https://github.com/glitchwizard/PandemicGameLesson).
 
 ## Resources
-Source template provided by Scott Bergler.
+Source template provided by Scott Bergler.[GitHub](https://github.com/skillitzimberg/TemplateJS).
 [ABOUTTEMPLATEJS](./ABOUTTEMPLATE.md)  
 
 ## Planning

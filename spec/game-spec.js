@@ -1,6 +1,7 @@
 import { City } from './../src/city.js';
 import { Game } from './../src/game.js';
 import { Card } from './../src/card.js';
+import { Player } from './../src/player.js';
 
 describe('Game', function() {
   let newGame;
@@ -44,6 +45,23 @@ describe('Game', function() {
     it('should "flip" an infection card, add the appropriate disease cube, check for outbreaks, and then add the discard to the graveyard deck', function() {
       let cardInPlay = newGame.flipInfectionCard();
       expect(newGame.infectionDiscardDeck[0].cityName).toEqual(cardInPlay.cityName);
+    });
+  });
+
+  describe('drawPlayerCard', function(){
+    it('should draw a play card to the players hand', function(){
+      let currentPlayer = newGame.findPlayer('Joe');
+      let cardInPlay = newGame.drawPlayerCard('Joe');
+      expect(currentPlayer.cardHand).toContain(cardInPlay);
+    })
+  })
+
+  describe('findPlayer', function() {
+    it('takes a player name and returns a the associated player object', function() {
+
+      const joe = newGame.findPlayer('Joe');
+      expect(new Player('Joe').name).toEqual(joe.name);
+      expect(new Player('Joe').role).toEqual(joe.role);
     });
   });
 
