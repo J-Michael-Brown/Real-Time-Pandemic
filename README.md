@@ -18,9 +18,10 @@
 
 
 ## Setup/Installation
-Clone the code from [GitHub](https://github.com/skillitzimberg/Pandemic).
+Cloned the template code from [GitHub](https://github.com/skillitzimberg/Pandemic).
 
 ## Resources
+Source template provided by Scott Bergler.
 [ABOUTTEMPLATEJS](./ABOUTTEMPLATE.md)  
 
 ## Planning

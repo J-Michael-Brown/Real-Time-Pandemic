@@ -2,7 +2,7 @@
 class Card{
   constructor(city){
   this.cityName = city.name;
-  this.diseaseColor = city.defaultDiseaseCodename;
+  this.diseaseCodename = city.defaultDiseaseCodename;
   }
 }
 

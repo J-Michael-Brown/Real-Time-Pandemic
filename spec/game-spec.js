@@ -29,14 +29,21 @@ describe('Game', function() {
     });
   });
 
-  describe('resolveOutbreaks', function() {
-    it("should set all cities' diseases to outbroke:false and return the number of outbreaks that had to be swithched.", function() {
-      newGame.cityList[0].outbreak('red');
-      newGame.cityList[1].outbreak('blue');
-      newGame.cityList[2].outbreak('red');
-      const outbreaks = newGame.resolveOutbreaks();
-      expect(outbreaks).toEqual(3);
-      expect(newGame.cityList[0].findDisease('red').outbroke).toEqual(false);
+  describe('resolveOutbreaks', function(){
+    it('should set all disease.outbroke = false, and return the total number of outbreaks resovled', function() {
+      newGame.cityList[0].addCube('red',4);
+      newGame.cityList[0].checkOutbreak();
+      let result = newGame.resolveOutbreaks();
+      expect(result).toEqual(1);
+      result = newGame.resolveOutbreaks();
+      expect(result).toEqual(0);
+    });
+  });
+
+  describe('flipInfectionCard', function() {
+    it('should "flip" an infection card, add the appropriate disease cube, check for outbreaks, and then add the discard to the graveyard deck', function() {
+      let cardInPlay = newGame.flipInfectionCard();
+      expect(newGame.infectionDiscardDeck[0].cityName).toEqual(cardInPlay.cityName);
     });
   });
 

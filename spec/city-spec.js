@@ -38,11 +38,17 @@ describe('City', function() {
 
   describe('outbreak', function() {
     it('add same type of disease to all "connection" cities. Set outbroke status to "true".', function() {
-      const newYork = new City('New York');
+      let newYork = new City('New York');
+      newYork.addCube('red',2);
       atlanta.connections.push(newYork);
       atlanta.outbreak('red');
-      const newYorkRed = newYork.findDisease('red');
-      expect(newYorkRed.cubes).toEqual(1);
+      let newYorkRed = newYork.findDisease('red');
+      expect(newYorkRed.cubes).toEqual(3);
+      expect(newYorkRed.outbroke).toEqual(false);
+      expect(atlanta.findDisease('red').outbroke).toEqual(false);
+
+      atlanta.outbreak('red');
+      newYorkRed = newYork.findDisease('red');
       expect(newYorkRed.outbroke).toEqual(true);
     });
   });

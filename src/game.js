@@ -14,6 +14,19 @@ class Game {
     this.infectionDiscardDeck = [];
   }
 
+  resolveOutbreaks() {
+    let numberOfOutbreaks = 0;
+    this.cityList.forEach(function(city) {
+      city.diseases.forEach(function(disease){
+        if(disease.outbroke){
+          disease.outbroke = false;
+          numberOfOutbreaks++;
+        }
+      });
+    });
+    return numberOfOutbreaks;
+  }
+
   createInfectionDeck(){
     const infectedDeck = [];
     this.cityList.forEach(function(city) {
@@ -44,7 +57,11 @@ class Game {
 
   flipInfectionCard () {
     let cardInPlay = this.infectionDeck.pop();
-
+    let city = this.findCity(cardInPlay.cityName);
+    city.addCube(cardInPlay.diseaseCodename);
+    city.checkOutbreak(cardInPlay.diseaseCodename);
+    this.infectionDiscardDeck.push(cardInPlay);
+    return cardInPlay;
   }
 
   drawPlayerCard(){

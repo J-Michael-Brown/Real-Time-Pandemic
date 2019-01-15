@@ -28,7 +28,7 @@ class City {
     this.connections.forEach(function(city) {
       if (!city.findDisease(codename).outbroke) {
         city.addCube(codename);
-        city.checkOutbreak;
+        city.checkOutbreak();
       }
     });
 
