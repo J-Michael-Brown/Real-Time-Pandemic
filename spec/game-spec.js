@@ -2,6 +2,7 @@ import { City } from './../src/city.js';
 import { Game } from './../src/game.js';
 import { Card } from './../src/card.js';
 import { Player } from './../src/player.js';
+import { Disease } from './../src/disease.js';
 
 describe('Game', function() {
   let newGame;
@@ -75,11 +76,31 @@ describe('Game', function() {
   describe('discardPlayerCard', function() {
     it('removes a chosen card from chosen players hand, and adds it to the discard deck', function() {
       let resultCard = newGame.drawPlayerCard('Joe');
-
       let discardedCard = newGame.discardPlayerCard('Joe', resultCard.cityName);
       expect(discardedCard).toEqual(resultCard);
       expect(newGame.playerDiscardDeck).toContain(resultCard);
+    });
+  });
 
+  describe('cure()', function() {
+    it('sets all cities\' diseases of a specified codename to cured:true', function() {
+      const newDisease = new Disease('veronica virus');
+      const racoon = new City('Racoon', 'veronica virus', [], [newDisease]);
+      newGame.diseaseList.push(newDisease);
+      expect(newGame.findDisease('veronica virus').cured).toEqual(false);
+      newGame.cure('veronica virus');
+      expect(newGame.findDisease('veronica virus').cured).toEqual(true);
+    });
+  });
+
+  describe('eradicate()', function() {
+    it('sets all cities\' diseases of a specified codename to eradicated:true', function() {
+      const newDisease = new Disease('veronica virus');
+      const racoon = new City('Racoon', 'veronica virus', [], [newDisease]);
+      newGame.diseaseList.push(newDisease);
+      expect(newGame.findDisease('veronica virus').eradicated).toEqual(false);
+      newGame.eradicate('veronica virus');
+      expect(newGame.findDisease('veronica virus').eradicated).toEqual(true);
     });
   });
 

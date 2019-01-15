@@ -14,6 +14,7 @@ class Game {
     this.epidemicCardAmount = 4;
     this.playerDiscardDeck = [];
     this.infectionDiscardDeck = [];
+    this.diseaseList = this.playerList[0].diseases;
   }
 
   resolveOutbreaks() {

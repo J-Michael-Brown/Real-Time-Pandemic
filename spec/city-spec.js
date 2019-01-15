@@ -22,6 +22,12 @@ describe('City', function() {
       let result = atlanta.findDisease('blue').cubes;
       expect(result).toEqual(3);
     });
+    it('should not add a cube if that disease is eradicated => disease.eradicated:true', function() {
+      atlanta.diseases[0].eradicated = true;
+      let blue = atlanta.diseases[0];
+      expect(atlanta.addCube(blue.codename)).toEqual(false);
+      expect(atlanta.diseases[0].cubes).toEqual(0);
+    });
   });
 
   describe('checkOutbreak', function() {

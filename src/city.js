@@ -1,9 +1,9 @@
 import { commonDiseases } from './disease.js';
 
 class City {
-  constructor(name, diseaseCodename = "", connections = []) {
+  constructor(name, diseaseCodename = "", connections = [], diseases = commonDiseases) {
     this.name = name;
-    this.diseases = commonDiseases;
+    this.diseases = diseases;
     this.connections = connections; // array of cities connected;
     this.defaultDiseaseCodename = diseaseCodename;
 
@@ -39,8 +39,10 @@ class City {
     for(let diseaseIndex = 0; diseaseIndex < length; diseaseIndex++) {
       if (this.diseases[diseaseIndex].codename == codename) {
         this.diseases[diseaseIndex].cubes+=numberOfCubes;
+        return true;
       }
     }
+    return false;
   }
 
   findDisease(codename) {
