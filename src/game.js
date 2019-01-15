@@ -66,10 +66,10 @@ class Game {
     return false;
   }
 
-  flipInfectionCard () {
+  flipInfectionCard (numberOfCubes = 1) {
     let cardInPlay = this.infectionDeck.pop();
     let city = this.findCity(cardInPlay.cityName);
-    city.addCube(cardInPlay.diseaseCodename);
+    city.addCube(cardInPlay.diseaseCodename, numberOfCubes);
     city.checkOutbreak(cardInPlay.diseaseCodename);
     this.infectionDiscardDeck.push(cardInPlay);
     return cardInPlay;
