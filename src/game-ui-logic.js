@@ -34,7 +34,7 @@ class GameUi extends Game{
       });
     });
     this.playerList.forEach(function(player) {
-      console.log(`${player.name}'s hand:'`);
+      console.log(`${player.name}'s hand:`);
       player.cardHand.forEach(function(card) {
         console.log(`   ${card.cityName}: ${card.diseaseCodename}`);
       });
